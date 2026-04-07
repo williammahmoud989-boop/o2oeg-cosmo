@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>O2OEG Cosmo - Logo Preview</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Cairo', sans-serif;
+      background: #f0f0f0;
+    }
+
+    .preview-section {
+      padding: 60px 40px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .preview-section h3 {
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      opacity: 0.6;
+    }
+
+    /* === Dark Background Preview === */
+    .dark-bg {
+      background: linear-gradient(135deg, #0d0d1a 0%, #1a0010 50%, #0d0d1a 100%);
+    }
+    .dark-bg h3 { color: #fff; }
+
+    /* === White Background Preview === */
+    .white-bg {
+      background: #ffffff;
+    }
+    .white-bg h3 { color: #333; }
+
+    /* === Rose Gradient Preview === */
+    .rose-bg {
+      background: linear-gradient(135deg, #C2185B 0%, #880E4F 100%);
+    }
+    .rose-bg h3 { color: #fff; }
+
+    /* === Transparent (Checkered) Preview === */
+    .transparent-bg {
+      background-image:
+        linear-gradient(45deg, #ccc 25%, transparent 25%),
+        linear-gradient(-45deg, #ccc 25%, transparent 25%),
+        linear-gradient(45deg, transparent 75%, #ccc 75%),
+        linear-gradient(-45deg, transparent 75%, #ccc 75%);
+      background-size: 20px 20px;
+      background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+      background-color: #fff;
+    }
+    .transparent-bg h3 { color: #333; }
+
+    /* === Gold Navy Preview === */
+    .navy-bg {
+      background: linear-gradient(135deg, #0f0f23 0%, #1a1a3e 100%);
+    }
+    .navy-bg h3 { color: #FFD700; }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .logo-container img,
+    .logo-container svg,
+    .logo-container object {
+      max-width: 100%;
+      height: auto;
+    }
+
+    .logo-lg { width: 520px; }
+    .logo-md { width: 300px; }
+    .logo-sm { width: 160px; }
+
+    .size-row {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .size-label {
+      font-size: 11px;
+      opacity: 0.5;
+      text-align: center;
+      margin-top: 8px;
+    }
+
+    .divider {
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(to right, transparent, #C2185B55, transparent);
+    }
+
+    /* Navbar demo */
+    .navbar-demo {
+      background: linear-gradient(90deg, #0d0d1a 0%, #1a0010 100%);
+      padding: 16px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+    }
+    .navbar-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
+    .navbar-links a {
+      color: rgba(255,255,255,0.75);
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    .navbar-links a:hover { color: #FF4081; }
+    .navbar-cta {
+      background: linear-gradient(135deg, #E91E8C, #C2185B);
+      color: #fff;
+      border: none;
+      padding: 10px 28px;
+      border-radius: 50px;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      font-family: 'Cairo', sans-serif;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== NAVBAR DEMO ===== -->
+  <nav class="navbar-demo">
+    <div style="display:flex;align-items:center;gap:12px;">
+      <object data="/images/logo.svg" type="image/svg+xml" width="200" height="70"
+              style="filter:brightness(1.1);">
+      </object>
+    </div>
+    <ul class="navbar-links">
+      <li><a href="#">الرئيسية</a></li>
+      <li><a href="#">الصالونات</a></li>
+      <li><a href="#">الخدمات</a></li>
+      <li><a href="#">العروض</a></li>
+    </ul>
+    <button class="navbar-cta">احجزي الآن</button>
+  </nav>
+
+  <div class="divider"></div>
+
+  <!-- ===== DARK BACKGROUND ===== -->
+  <div class="preview-section dark-bg">
+    <h3>على خلفية داكنة</h3>
+    <div class="logo-container logo-lg">
+      <object data="/images/logo.svg" type="image/svg+xml" width="520" height="180"></object>
+    </div>
+    <div class="size-row">
+      <div>
+        <div class="logo-container logo-md">
+          <object data="/images/logo.svg" type="image/svg+xml" width="300" height="104"></object>
+        </div>
+        <p class="size-label" style="color:#aaa">متوسط</p>
+      </div>
+      <div>
+        <div class="logo-container logo-sm">
+          <object data="/images/logo.svg" type="image/svg+xml" width="160" height="55"></object>
+        </div>
+        <p class="size-label" style="color:#aaa">صغير (Favicon)</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ===== WHITE BACKGROUND ===== -->
+  <div class="preview-section white-bg">
+    <h3>على خلفية بيضاء</h3>
+    <div class="logo-container logo-lg">
+      <object data="/images/logo.svg" type="image/svg+xml" width="520" height="180"></object>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ===== ROSE GRADIENT ===== -->
+  <div class="preview-section rose-bg">
+    <h3>على خلفية وردية</h3>
+    <div class="logo-container logo-lg">
+      <object data="/images/logo.svg" type="image/svg+xml" width="520" height="180"></object>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ===== TRANSPARENT (CHECKERED) ===== -->
+  <div class="preview-section transparent-bg">
+    <h3>خلفية شفافة</h3>
+    <div class="logo-container logo-lg">
+      <object data="/images/logo.svg" type="image/svg+xml" width="520" height="180"></object>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ===== NAVY/DARK ===== -->
+  <div class="preview-section navy-bg">
+    <h3 style="color:#FFD700;">على خلفية نيفي</h3>
+    <div class="logo-container logo-lg">
+      <object data="/images/logo.svg" type="image/svg+xml" width="520" height="180"></object>
+    </div>
+  </div>
+
+</body>
+</html>
