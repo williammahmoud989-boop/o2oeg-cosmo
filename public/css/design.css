@@ -1,31 +1,35 @@
-/* design.css - نظام التصميم الفاخر "Gen Z 2026" */
 @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&family=Outfit:wght@300;400;600;700;900&display=swap');
 
 /* Global Layout Optimization */
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 html[dir="rtl"] body {
-  text-align: right;
-  direction: rtl;
+    text-align: right;
+    direction: rtl;
+}
+
+.container {
+    max-width: 1250px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 clamp(1rem, 5vw, 2.5rem);
+    width: 100%;
 }
 
 :root {
-  --primary-orange: #FF5C00; /* Electric Orange */
-  --primary-indigo: #4F46E5; /* Cyber Indigo */
-  --bg-dark: #050505; /* True Black */
+  --primary-orange: #FF5C00;
+  --primary-indigo: #4F46E5;
+  --bg-dark: #050505;
   --bg-card: rgba(26, 26, 46, 0.4);
   --text-main: #FFFFFF;
   --text-dim: #94A3B8;
   --accent-glow: rgba(255, 92, 0, 0.15);
   --glass-border: rgba(255, 255, 255, 0.08);
   --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-  box-sizing: border-box;
 }
 
 body {
