@@ -29,3 +29,4 @@ class ManageMarketingCampaigns extends ManageRecords
             ->where('salon_id', auth()->user()->salon_id);
     }
 }
+

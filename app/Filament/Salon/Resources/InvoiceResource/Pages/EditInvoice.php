@@ -17,3 +17,4 @@ class EditInvoice extends EditRecord
         ];
     }
 }
+

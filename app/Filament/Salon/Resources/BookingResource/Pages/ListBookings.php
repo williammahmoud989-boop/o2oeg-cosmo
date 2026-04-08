@@ -17,3 +17,4 @@ class ListBookings extends ListRecords
         ];
     }
 }
+

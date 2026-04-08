@@ -17,3 +17,4 @@ class EditUserPackage extends EditRecord
         ];
     }
 }
+

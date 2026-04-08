@@ -24,7 +24,7 @@ class PricingRuleResource extends Resource
 
     public static function form(Schema $schema): Schema
     {
-        return PricingRuleForm::configure($form);
+        return PricingRuleForm::configure($schema);
     }
 
     public static function table(Table $table): Table
@@ -48,3 +48,5 @@ class PricingRuleResource extends Resource
         ];
     }
 }
+
+

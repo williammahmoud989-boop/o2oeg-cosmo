@@ -13,7 +13,7 @@ use Filament\Schemas\Components\Section;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
-use Filament\Forms\Components\Repeater;
+use Filament\Schemas\Components\Repeater;
 use Filament\Forms\Components\Toggle;
 use Filament\Tables;
 use Filament\Tables\Table;
@@ -103,11 +103,11 @@ class PackageResource extends Resource
                     ->label('الحالة'),
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
+                \Filament\Actions\EditAction::make(),
             ])
             ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
+                \Filament\Actions\BulkActionGroup::make([
+                    \Filament\Actions\DeleteBulkAction::make(),
                 ]),
             ]);
     }
@@ -121,3 +121,7 @@ class PackageResource extends Resource
         ];
     }
 }
+
+
+
+

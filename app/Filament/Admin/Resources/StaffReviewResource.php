@@ -10,7 +10,6 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Filament\Schemas\Components\Section;
 use Filament\Tables\Columns\TextColumn;
-use Filament\Tables\Columns\RatingColumn;
 use Filament\Tables\Filters\SelectFilter;
 
 class StaffReviewResource extends Resource
@@ -49,8 +48,10 @@ class StaffReviewResource extends Resource
                     ->label('Booking')
                     ->sortable(),
 
-                RatingColumn::make('rating')
+                TextColumn::make('rating')
                     ->label('Rating')
+                    ->badge()
+                    ->color('warning')
                     ->sortable()
                     ->alignCenter(),
 
@@ -103,3 +104,14 @@ class StaffReviewResource extends Resource
         ];
     }
 }
+
+
+
+
+
+
+
+
+
+
+

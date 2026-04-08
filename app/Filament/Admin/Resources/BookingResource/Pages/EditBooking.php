@@ -17,3 +17,6 @@ class EditBooking extends EditRecord
         ];
     }
 }
+
+
+

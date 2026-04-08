@@ -9,3 +9,4 @@ class CreateStaff extends CreateRecord
 {
     protected static string $resource = StaffResource::class;
 }
+

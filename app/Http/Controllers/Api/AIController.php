@@ -24,10 +24,26 @@ class AIController extends Controller
     {
         $request->validate([
             'image' => 'required|image|max:5120', // Max 5MB
-            'salon_id' => 'required|exists:salons,id',
+            'salon_id' => 'nullable|string', // Can be 'demo' or actual ID
         ]);
 
-        $salon = Salon::with('services')->findOrFail($request->salon_id);
+        $services = [];
+        if (!$request->salon_id || $request->salon_id === 'demo') {
+            // General high-end services for O2O EG Demo
+            $services = [
+                ['name_ar' => 'قص شعر احترافي', 'name' => 'Professional Hair Cut'],
+                ['name_ar' => 'تنظيف بشرة هيدرافيشل', 'name' => 'HydraFacial Skin Treatment'],
+                ['name_ar' => 'صبغة شعر أومبري', 'name' => 'Ombre Hair Coloring'],
+                ['name_ar' => 'ترميم الشعر بالبروتين', 'name' => 'Protein Hair Restoration'],
+                ['name_ar' => 'باديكير ومانيكير سبا', 'name' => 'Spa Pedicure & Manicure'],
+                ['name_ar' => 'جلسة نضارة كولاجين', 'name' => 'Collagen Boosting Session'],
+                ['name_ar' => 'مساج وجه مانيوال', 'name' => 'Manual Face Massage']
+            ];
+        } else {
+            $salon = Salon::with('services')->findOrFail($request->salon_id);
+            $services = $salon->services->toArray();
+        }
+
         $image = $request->file('image');
 
         // Store temporarily for analysis
@@ -35,7 +51,7 @@ class AIController extends Controller
         $absolutePath = storage_path('app/public/' . $tempPath);
 
         // Analyze via Gemini
-        $analysis = $this->gemini->analyzeImage($absolutePath, $salon->services->toArray());
+        $analysis = $this->gemini->analyzeImage($absolutePath, $services);
 
         // PRIVACY POLICY: Delete image immediately after analysis
         if (Storage::disk('public')->exists($tempPath)) {

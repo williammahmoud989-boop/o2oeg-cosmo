@@ -6,11 +6,11 @@ use App\Models\Salon;
 use Filament\Pages\Tenancy\RegisterTenant;
 use Filament\Schemas\Schema;
 use Filament\Schemas\Components\Section;
-use Filament\Schemas\Components\TextInput;
-use Filament\Schemas\Components\Textarea;
-use Filament\Schemas\Components\FileUpload;
-use Filament\Schemas\Components\Toggle;
-use Filament\Schemas\Components\CheckboxList;
+use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\Textarea;
+use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\Toggle;
+use Filament\Forms\Components\CheckboxList;
 
 class RegisterSalon extends RegisterTenant
 {
@@ -143,3 +143,6 @@ class RegisterSalon extends RegisterTenant
         return Salon::create($data);
     }
 }
+
+
+

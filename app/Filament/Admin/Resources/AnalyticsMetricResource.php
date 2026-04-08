@@ -10,7 +10,6 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Filament\Schemas\Components\Section;
 use Filament\Tables\Columns\TextColumn;
-use Filament\Tables\Columns\BadgeColumn;
 use Filament\Tables\Filters\Filter;
 use Filament\Tables\Filters\SelectFilter;
 use Illuminate\Database\Eloquent\Builder;
@@ -117,11 +116,11 @@ class AnalyticsMetricResource extends Resource
                     ->label('Salon')
                     ->relationship('salon', 'name'),
 
-                Filter::make('date_range')
+                /* Filter::make('date_range')
                     ->form([
-                        \Filament\Schemas\Components\DatePicker::make('date_from')
+                        \Filament\Forms\Components\DatePicker::make('date_from')
                             ->label('From Date'),
-                        \Filament\Schemas\Components\DatePicker::make('date_to')
+                        \Filament\Forms\Components\DatePicker::make('date_to')
                             ->label('To Date'),
                     ])
                     ->query(function (Builder $query, array $data): Builder {
@@ -134,7 +133,7 @@ class AnalyticsMetricResource extends Resource
                                 $data['date_to'],
                                 fn (Builder $query, $date): Builder => $query->whereDate('date', '<=', $date),
                             );
-                    }),
+                    }), */
             ])
             ->actions([
                 // View only - no edit/delete actions needed
@@ -159,3 +158,15 @@ class AnalyticsMetricResource extends Resource
         ];
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+

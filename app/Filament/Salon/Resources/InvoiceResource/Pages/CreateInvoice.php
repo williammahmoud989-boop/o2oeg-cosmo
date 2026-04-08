@@ -16,3 +16,4 @@ class CreateInvoice extends CreateRecord
         return $data;
     }
 }
+

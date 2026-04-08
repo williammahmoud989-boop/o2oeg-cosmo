@@ -17,3 +17,4 @@ class EditPricingRule extends EditRecord
         ];
     }
 }
+

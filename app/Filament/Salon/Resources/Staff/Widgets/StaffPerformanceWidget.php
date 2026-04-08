@@ -46,3 +46,4 @@ class StaffPerformanceWidget extends StatsOverviewWidget
         ];
     }
 }
+

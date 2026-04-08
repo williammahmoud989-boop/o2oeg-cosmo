@@ -9,3 +9,4 @@ class CreatePromoCode extends CreateRecord
 {
     protected static string $resource = PromoCodeResource::class;
 }
+

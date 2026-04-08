@@ -9,11 +9,10 @@ use Filament\Schemas\Schema;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Filament\Schemas\Components\Section;
-use Filament\Schemas\Components\TextInput;
-use Filament\Schemas\Components\Select;
+use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\Select;
 use Filament\Tables\Columns\TextColumn;
-use Filament\Tables\Columns\RatingColumn;
-use Filament\Tables\Columns\ProgressColumn;
+// ProgressColumn replaced with standard TextColumn
 use Filament\Tables\Filters\SelectFilter;
 
 class StaffPerformanceMetricResource extends Resource
@@ -114,7 +113,7 @@ class StaffPerformanceMetricResource extends Resource
 
                 TextColumn::make('performance_score')
                     ->label('Score')
-                    ->numeric(decimals: 1)
+                    ->numeric(decimalPlaces: 1)
                     ->suffix('%')
                     ->sortable()
                     ->color(function (float $state): string {
@@ -125,31 +124,38 @@ class StaffPerformanceMetricResource extends Resource
                         };
                     }),
 
-                RatingColumn::make('average_rating')
+                TextColumn::make('average_rating')
                     ->label('Avg Rating')
+                    ->numeric(decimalPlaces: 1)
+                    ->badge()
+                    ->color('warning')
                     ->sortable()
                     ->alignCenter(),
 
-                ProgressColumn::make('completion_rate')
+                TextColumn::make('completion_rate')
                     ->label('Completion %')
+                    ->numeric(decimalPlaces: 1)
+                    ->suffix('%')
                     ->color('info')
                     ->alignCenter(),
 
-                ProgressColumn::make('attendance_rate')
+                TextColumn::make('attendance_rate')
                     ->label('Attendance %')
+                    ->numeric(decimalPlaces: 1)
+                    ->suffix('%')
                     ->color('success')
                     ->alignCenter(),
 
                 TextColumn::make('total_revenue')
                     ->label('Revenue')
                     ->prefix('$')
-                    ->numeric(decimals: 2)
+                    ->numeric(decimalPlaces: 2)
                     ->sortable(),
 
                 TextColumn::make('total_commission')
                     ->label('Commission')
                     ->prefix('$')
-                    ->numeric(decimals: 2)
+                    ->numeric(decimalPlaces: 2)
                     ->sortable(),
 
                 TextColumn::make('total_bookings')
@@ -175,7 +181,7 @@ class StaffPerformanceMetricResource extends Resource
                     }),
             ])
             ->actions([
-                \Filament\Tables\Actions\ViewAction::make(),
+                \Filament\Actions\ViewAction::make(),
             ])
             ->bulkActions([
                 // No bulk actions - metrics are calculated, not manually edited
@@ -198,3 +204,16 @@ class StaffPerformanceMetricResource extends Resource
         ];
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+

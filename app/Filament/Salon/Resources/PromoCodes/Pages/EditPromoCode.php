@@ -17,3 +17,4 @@ class EditPromoCode extends EditRecord
         ];
     }
 }
+

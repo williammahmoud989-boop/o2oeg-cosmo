@@ -52,3 +52,4 @@ class StatsOverview extends BaseWidget
         ];
     }
 }
+

@@ -1,0 +1,124 @@
+/* ai-consultant.css */
+.ai-section {
+    padding: clamp(4rem, 10vw, 8rem) 0;
+    position: relative;
+    background: radial-gradient(circle at 100% 0%, rgba(255, 92, 0, 0.05), transparent 50%);
+}
+
+.ai-scanner-container {
+    max-width: 900px;
+    margin: 2rem auto;
+    background: var(--bg-card);
+    border: 1px solid var(--glass-border);
+    border-radius: clamp(1.5rem, 5vw, 3rem);
+    padding: clamp(1.5rem, 5vw, 3rem);
+    position: relative;
+    overflow: hidden;
+    width: 95%;
+}
+
+.upload-area {
+    border: 2px dashed rgba(255, 92, 0, 0.2);
+    border-radius: clamp(1rem, 3vw, 2rem);
+    padding: clamp(2rem, 8vw, 4rem) 1.5rem;
+    text-align: center;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+    position: relative;
+}
+
+.upload-area:hover {
+    border-color: var(--primary-orange);
+    background: rgba(255, 92, 0, 0.03);
+}
+
+.preview-container {
+    display: none;
+    position: relative;
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    border-radius: 1.5rem;
+    overflow: hidden;
+    border: 2px solid var(--primary-orange);
+}
+
+.preview-container img {
+    width: 100%;
+    display: block;
+}
+
+/* Scanning Animation */
+.scanner-line {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: var(--primary-orange);
+    box-shadow: 0 0 15px var(--primary-orange);
+    display: none;
+    z-index: 10;
+    animation: scan 2.5s ease-in-out infinite;
+}
+
+@keyframes scan {
+    0%, 100% { top: 0%; }
+    50% { top: 100%; }
+}
+
+/* Result Styles */
+.ai-result-card {
+    display: none;
+    margin-top: 2.5rem;
+    padding: clamp(1.5rem, 5vw, 2.5rem);
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 2rem;
+    border: 1px solid rgba(255, 92, 0, 0.1);
+    animation: fadeInUp 0.8s ease forwards;
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.ai-reasoning {
+    margin-top: 2rem;
+    padding: 1.25rem;
+    background: rgba(79, 70, 229, 0.05);
+    border-radius: 1.25rem;
+    border-right: 4px solid var(--primary-indigo);
+    font-size: 0.95rem;
+    color: var(--text-dim);
+}
+
+.recommendation-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 1.5rem;
+}
+
+.chip {
+    padding: 0.5rem 1rem;
+    background: rgba(255, 92, 0, 0.1);
+    color: var(--primary-orange);
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    border: 1px solid rgba(255, 92, 0, 0.2);
+}
+
+@media (max-width: 640px) {
+    .ai-scanner-container {
+        padding: 1.5rem;
+        border-radius: 2rem;
+    }
+    .ai-result-card h3 {
+        font-size: 1.3rem !important;
+    }
+    .ai-reasoning {
+        font-size: 0.9rem;
+    }
+}

@@ -15,7 +15,7 @@ use Filament\Forms\Components\DateTimePicker;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\Select;
-use Filament\Forms\Components\Placeholder;
+use Filament\Schemas\Components\Placeholder;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
@@ -145,3 +145,6 @@ class MarketingCampaignResource extends Resource
         ];
     }
 }
+
+
+

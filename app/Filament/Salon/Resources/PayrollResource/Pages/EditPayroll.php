@@ -17,3 +17,4 @@ class EditPayroll extends EditRecord
         ];
     }
 }
+

@@ -10,3 +10,4 @@ class CreateExpense extends CreateRecord
 {
     protected static string $resource = ExpenseResource::class;
 }
+

@@ -25,7 +25,7 @@ class PromoCodeResource extends Resource
 
     public static function form(Schema $schema): Schema
     {
-        return PromoCodeForm::configure($form);
+        return PromoCodeForm::configure($schema);
     }
 
     public static function table(Table $table): Table
@@ -49,3 +49,5 @@ class PromoCodeResource extends Resource
         ];
     }
 }
+
+

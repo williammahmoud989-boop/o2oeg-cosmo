@@ -47,3 +47,4 @@ class TopServicesChart extends ChartWidget
         return 'doughnut';
     }
 }
+

@@ -9,3 +9,6 @@ class CreateSalon extends CreateRecord
 {
     protected static string $resource = SalonResource::class;
 }
+
+
+

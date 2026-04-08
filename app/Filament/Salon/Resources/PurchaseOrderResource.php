@@ -14,7 +14,7 @@ use Filament\Forms\Components\Select;
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
-use Filament\Forms\Components\Repeater;
+use Filament\Schemas\Components\Repeater;
 use Filament\Tables;
 use Filament\Tables\Table;
 
@@ -150,8 +150,8 @@ class PurchaseOrderResource extends Resource
                     ]),
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
-                Tables\Actions\Action::make('mark_as_received')
+                \Filament\Actions\EditAction::make(),
+                \Filament\Actions\Action::make('mark_as_received')
                     ->label('استلام')
                     ->icon('heroicon-o-check-circle')
                     ->color('success')
@@ -176,8 +176,8 @@ class PurchaseOrderResource extends Resource
                     }),
             ])
             ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
+                \Filament\Actions\BulkActionGroup::make([
+                    \Filament\Actions\DeleteBulkAction::make(),
                 ]),
             ]);
     }
@@ -191,3 +191,7 @@ class PurchaseOrderResource extends Resource
         ];
     }
 }
+
+
+
+

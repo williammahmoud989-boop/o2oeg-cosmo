@@ -17,3 +17,6 @@ class EditSalon extends EditRecord
         ];
     }
 }
+
+
+

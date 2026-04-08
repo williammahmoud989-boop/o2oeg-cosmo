@@ -9,3 +9,4 @@ class CreatePricingRule extends CreateRecord
 {
     protected static string $resource = PricingRuleResource::class;
 }
+

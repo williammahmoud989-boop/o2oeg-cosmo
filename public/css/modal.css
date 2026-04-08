@@ -1,0 +1,187 @@
+/* modal.css */
+.modal {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.88);
+    -webkit-backdrop-filter: blur(25px);
+    backdrop-filter: blur(25px);
+    z-index: 10001;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.modal.active {
+    display: flex;
+    opacity: 1;
+}
+
+.modal-content {
+    background: #0D0D14; /* Solid luxury dark background */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    max-width: 850px;
+    width: 95%;
+    max-height: 90vh;
+    padding: clamp(1.5rem, 5vw, 3.5rem);
+    border-radius: clamp(1.5rem, 4vw, 3rem);
+    position: relative;
+    text-align: right;
+    overflow-y: auto;
+    transform: scale(0.95) translateY(30px);
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 50px 100px -20px rgba(0, 0, 0, 0.9);
+}
+
+.modal.active .modal-content {
+    transform: scale(1) translateY(0);
+}
+
+.close-modal {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    cursor: pointer;
+    font-size: 1.5rem;
+    color: var(--text-dim);
+    transition: var(--transition-smooth);
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 50%;
+    z-index: 100;
+}
+
+.close-modal:hover {
+    color: var(--primary-orange);
+    background: rgba(255, 92, 0, 0.1);
+    transform: rotate(90deg);
+}
+
+/* Modal Content Styling */
+.modal-header {
+    margin-bottom: 2rem;
+    border-bottom: 1px solid var(--glass-border);
+    padding-bottom: 1rem;
+}
+
+.modal-header h2 {
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
+    font-weight: 900;
+    color: var(--primary-orange);
+}
+
+.modal-body {
+    font-size: clamp(0.95rem, 2vw, 1.15rem);
+    line-height: 1.7;
+}
+
+.feature-list-detailed {
+    list-style: none;
+    padding: 0;
+    margin-top: 1.5rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(clamp(250px, 100%, 350px), 1fr));
+    gap: 1rem;
+}
+
+.feature-item {
+    background: rgba(255, 255, 255, 0.03);
+    padding: 1.25rem;
+    border-radius: 1.25rem;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: var(--transition-smooth);
+}
+
+.feature-item:hover {
+    background: rgba(255, 92, 0, 0.05);
+    border-color: rgba(255, 92, 0, 0.2);
+}
+
+.feature-item h4 {
+    color: var(--primary-orange);
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+
+/* Modal Utility Classes for Content */
+.modal-subtitle {
+    color: var(--text-dim);
+    font-size: 1.2rem;
+    margin-top: 0.5rem;
+}
+
+.modal-highlight-box {
+    margin-top: 3rem;
+    padding: 2rem;
+    border-radius: 2rem;
+    background: rgba(255, 92, 0, 0.05);
+    border: 1px solid var(--primary-orange);
+}
+
+.modal-highlight-box.is-dashed {
+    border-style: dashed;
+}
+
+.modal-highlight-box.variant-indigo {
+    background: rgba(79, 70, 229, 0.05);
+    border-color: var(--primary-indigo);
+}
+
+.modal-highlight-box.variant-indigo-gradient {
+    background: linear-gradient(135deg, rgba(79, 70, 229, 0.1), rgba(255, 92, 0, 0.1));
+    border-color: var(--primary-indigo);
+}
+
+.modal-highlight-title {
+    color: var(--primary-orange);
+    margin-bottom: 1rem;
+}
+
+.modal-highlight-box.variant-indigo .modal-highlight-title {
+    color: var(--primary-indigo);
+}
+
+.modal-highlight-box.variant-indigo-gradient .modal-highlight-title {
+    color: white;
+}
+
+.modal-highlight-box.variant-indigo-gradient .modal-highlight-text {
+    color: var(--text-dim);
+}
+
+.modal-highlight-text {
+    font-size: 1rem;
+}
+
+.modal-footer {
+    margin-top: 3rem;
+    text-align: left;
+}
+
+/* Scrollbar for modal content */
+.modal-content::-webkit-scrollbar {
+    width: 6px;
+}
+
+.modal-content::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.modal-content::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+}
+@media (max-width: 640px) {
+    .modal-content {
+        padding: 2rem 1.5rem;
+    }
+}

@@ -10,3 +10,4 @@ class CreatePayroll extends CreateRecord
 {
     protected static string $resource = PayrollResource::class;
 }
+

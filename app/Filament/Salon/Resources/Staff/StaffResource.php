@@ -66,3 +66,4 @@ class StaffResource extends Resource
             ]);
     }
 }
+

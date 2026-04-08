@@ -17,3 +17,4 @@ class EditExpense extends EditRecord
         ];
     }
 }
+

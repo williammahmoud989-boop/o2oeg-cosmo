@@ -16,3 +16,4 @@ class ListSuppliers extends ManageRecords
         ];
     }
 }
+

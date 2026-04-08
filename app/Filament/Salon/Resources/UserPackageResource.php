@@ -112,8 +112,8 @@ class UserPackageResource extends Resource
                 Tables\Filters\TernaryFilter::make('is_active'),
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
-                Tables\Actions\Action::make('consume')
+                \Filament\Actions\EditAction::make(),
+                \Filament\Actions\Action::make('consume')
                     ->label('خصم جلسة')
                     ->icon('heroicon-o-scissors')
                     ->color('warning')
@@ -147,8 +147,8 @@ class UserPackageResource extends Resource
                     ->visible(fn ($record) => $record->is_active && $record->expiry_date >= now()->startOfDay()),
             ])
             ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
+                \Filament\Actions\BulkActionGroup::make([
+                    \Filament\Actions\DeleteBulkAction::make(),
                 ]),
             ]);
     }
@@ -162,3 +162,7 @@ class UserPackageResource extends Resource
         ];
     }
 }
+
+
+
+

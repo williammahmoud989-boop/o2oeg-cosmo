@@ -1,0 +1,84 @@
+/* feature-grid.css */
+.module-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(clamp(280px, 100%, 350px), 1fr));
+    gap: clamp(1.5rem, 4vw, 2.5rem);
+    margin-top: 3rem;
+}
+
+.module-card {
+    position: relative;
+    padding: clamp(2rem, 5vw, 3.5rem) clamp(1.5rem, 5vw, 2.5rem);
+    border-radius: clamp(1.5rem, 3vw, 2.5rem);
+    transition: var(--transition-smooth);
+    cursor: pointer;
+    overflow: hidden;
+    height: 100%;
+}
+
+.module-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at top right, rgba(255, 92, 0, 0.1), transparent 60%);
+    opacity: 0;
+    transition: var(--transition-smooth);
+}
+
+.module-card:hover {
+    transform: translateY(-12px) scale(1.02);
+    border-color: rgba(255, 92, 0, 0.4);
+    box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.5);
+}
+
+.module-card:hover::before {
+    opacity: 1;
+}
+
+.module-card .icon {
+    font-size: 3.5rem;
+    margin-bottom: 2rem;
+    display: block;
+    transition: var(--transition-smooth);
+}
+
+.module-card:hover .icon {
+    transform: scale(1.2) rotate(8deg);
+    filter: drop-shadow(0 0 15px var(--primary-orange));
+}
+
+.module-card h3 {
+    font-size: 1.8rem;
+    font-weight: 800;
+    margin-bottom: 1.25rem;
+    color: white;
+}
+
+.module-card p {
+    color: var(--text-dim);
+    font-size: 1.1rem;
+    line-height: 1.7;
+    margin-bottom: 2rem;
+}
+
+.module-card .learn-more {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--primary-orange);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    opacity: 0.7;
+    transition: var(--transition-smooth);
+}
+
+.module-card:hover .learn-more {
+    opacity: 1;
+    gap: 0.8rem;
+}
+
+@media (max-width: 768px) {
+    .module-grid {
+        grid-template-columns: 1fr;
+    }
+}

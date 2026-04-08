@@ -17,3 +17,6 @@ class ListSalons extends ListRecords
         ];
     }
 }
+
+
+

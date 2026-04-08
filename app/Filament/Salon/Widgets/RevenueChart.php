@@ -52,3 +52,4 @@ class RevenueChart extends ChartWidget
         return 'line';
     }
 }
+

@@ -10,12 +10,12 @@ use Filament\Schemas\Schema;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Filament\Schemas\Components\Section;
-use Filament\Schemas\Components\DatePicker;
-use Filament\Schemas\Components\FileUpload;
-use Filament\Schemas\Components\Select;
-use Filament\Schemas\Components\Textarea;
-use Filament\Schemas\Components\TextInput;
-use Filament\Schemas\Components\TimePicker;
+use Filament\Forms\Components\DatePicker;
+use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\Select;
+use Filament\Forms\Components\Textarea;
+use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\TimePicker;
 use Filament\Notifications\Notification;
 
 class BookingResource extends Resource
@@ -250,3 +250,9 @@ class BookingResource extends Resource
         ];
     }
 }
+
+
+
+
+
+

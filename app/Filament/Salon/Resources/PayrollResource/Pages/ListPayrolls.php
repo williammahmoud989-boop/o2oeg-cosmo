@@ -18,3 +18,4 @@ class ListPayrolls extends ListRecords
         ];
     }
 }
+

@@ -10,3 +10,4 @@ class CreatePackage extends CreateRecord
 {
     protected static string $resource = PackageResource::class;
 }
+

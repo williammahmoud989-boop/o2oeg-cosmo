@@ -212,8 +212,8 @@ class PayrollResource extends Resource
                     ->relationship('staff', 'name'),
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
-                Tables\Actions\Action::make('mark_as_paid')
+                \Filament\Actions\EditAction::make(),
+                \Filament\Actions\Action::make('mark_as_paid')
                     ->label('تم الدفع')
                     ->icon('heroicon-o-check-circle')
                     ->color('success')
@@ -227,8 +227,8 @@ class PayrollResource extends Resource
                     }),
             ])
             ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
+                \Filament\Actions\BulkActionGroup::make([
+                    \Filament\Actions\DeleteBulkAction::make(),
                 ]),
             ]);
     }
@@ -242,3 +242,7 @@ class PayrollResource extends Resource
         ];
     }
 }
+
+
+
+

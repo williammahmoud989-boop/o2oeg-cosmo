@@ -5,9 +5,8 @@ namespace App\Filament\Admin\Resources;
 use App\Filament\Admin\Resources\StaffInteractionResource\Pages;
 use App\Models\StaffInteraction;
 use Filament\Forms;
-use Filament\Forms\Form;
-use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
+use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
@@ -23,10 +22,10 @@ class StaffInteractionResource extends Resource
 
     protected static ?string $pluralModelLabel = 'تفاعلات الموظفين';
 
-    public static function schema(Schema $schema): Schema
+    public static function form(Schema $schema): Schema
     {
         return $schema
-            ->components([
+            ->schema([
                 Forms\Components\Select::make('staff_id')
                     ->relationship('staff', 'name')
                     ->required(),
@@ -88,10 +87,11 @@ class StaffInteractionResource extends Resource
             ])
             ->actions([
                 Tables\Actions\ViewAction::make(),
+                Tables\Actions\EditAction::make(),
             ])
             ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
+                \Filament\Actions\BulkActionGroup::make([
+                    \Filament\Actions\DeleteBulkAction::make(),
                 ]),
             ]);
     }
@@ -113,3 +113,13 @@ class StaffInteractionResource extends Resource
         ];
     }
 }
+
+
+
+
+
+
+
+
+
+

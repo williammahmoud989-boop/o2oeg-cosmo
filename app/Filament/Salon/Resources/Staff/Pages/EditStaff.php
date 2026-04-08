@@ -29,3 +29,4 @@ class EditStaff extends EditRecord
         ];
     }
 }
+

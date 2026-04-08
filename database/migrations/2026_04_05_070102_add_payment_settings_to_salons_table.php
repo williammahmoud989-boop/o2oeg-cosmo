@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('salons', function (Blueprint $table) {
-            $table->boolean('requires_deposit')->default(false)->after('is_active');
+            $table->boolean('requires_deposit')->default(false)->after('status');
             $table->integer('deposit_percentage')->default(20)->after('requires_deposit');
         });
     }

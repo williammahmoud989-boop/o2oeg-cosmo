@@ -7,14 +7,14 @@ use Filament\Pages\Tenancy\EditTenantProfile;
 use Filament\Schemas\Schema;
 use Filament\Schemas\Components\Section;
 use Filament\Schemas\Components\Grid;
-use Filament\Schemas\Components\TextInput;
-use Filament\Schemas\Components\Select;
-use Filament\Schemas\Components\Textarea;
-use Filament\Schemas\Components\FileUpload;
-use Filament\Schemas\Components\Toggle;
-use Filament\Schemas\Components\CheckboxList;
+use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\Select;
+use Filament\Forms\Components\Textarea;
+use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\Toggle;
+use Filament\Forms\Components\CheckboxList;
 use Filament\Schemas\Components\Repeater;
-use Filament\Schemas\Components\TimePicker;
+use Filament\Forms\Components\TimePicker;
 
 class EditSalonProfile extends EditTenantProfile
 {
@@ -198,3 +198,6 @@ class EditSalonProfile extends EditTenantProfile
             ]);
     }
 }
+
+
+

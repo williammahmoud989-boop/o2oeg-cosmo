@@ -9,3 +9,4 @@ class CreateBooking extends CreateRecord
 {
     protected static string $resource = BookingResource::class;
 }
+

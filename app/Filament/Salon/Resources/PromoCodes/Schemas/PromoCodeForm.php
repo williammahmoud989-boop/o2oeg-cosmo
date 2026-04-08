@@ -2,9 +2,9 @@
 
 namespace App\Filament\Salon\Resources\PromoCodes\Schemas;
 
-use Filament\Schemas\Components\TextInput;
-use Filament\Schemas\Components\DateTimePicker;
-use Filament\Schemas\Components\Toggle;
+use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\DateTimePicker;
+use Filament\Forms\Components\Toggle;
 use Filament\Schemas\Schema;
 
 class PromoCodeForm
@@ -66,3 +66,5 @@ class PromoCodeForm
             ]);
     }
 }
+
+

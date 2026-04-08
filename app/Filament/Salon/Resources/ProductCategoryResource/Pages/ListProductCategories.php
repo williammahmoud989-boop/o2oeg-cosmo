@@ -16,3 +16,4 @@ class ListProductCategories extends ManageRecords
         ];
     }
 }
+

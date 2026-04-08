@@ -9,12 +9,12 @@ use Filament\Schemas\Schema;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Filament\Schemas\Components\Section;
-use Filament\Schemas\Components\Select;
-use Filament\Schemas\Components\DatePicker;
-use Filament\Schemas\Components\TimePicker;
-use Filament\Schemas\Components\Textarea;
+use Filament\Forms\Components\DatePicker;
+use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\Select;
+use Filament\Forms\Components\TimePicker;
+use Filament\Forms\Components\Textarea;
 use Filament\Tables\Columns\TextColumn;
-use Filament\Tables\Columns\BadgeColumn;
 use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Filters\Filter;
 use Illuminate\Database\Eloquent\Builder;
@@ -89,7 +89,8 @@ class StaffAttendanceResource extends Resource
                     ->time('H:i')
                     ->alignCenter(),
 
-                BadgeColumn::make('status')
+                TextColumn::make('status')
+                    ->badge()
                     ->label('Status')
                     ->color(function (string $state): string {
                         return match ($state) {
@@ -127,7 +128,7 @@ class StaffAttendanceResource extends Resource
                         'on_leave' => 'On Leave',
                     ]),
 
-                Filter::make('date_range')
+                Tables\Filters\Filter::make('date_range')
                     ->form([
                         DatePicker::make('date_from')
                             ->label('From Date'),
@@ -147,11 +148,11 @@ class StaffAttendanceResource extends Resource
                     }),
             ])
             ->actions([
-                \Filament\Tables\Actions\EditAction::make(),
+                \Filament\Actions\EditAction::make(),
             ])
             ->bulkActions([
-                \Filament\Tables\Actions\BulkActionGroup::make([
-                    \Filament\Tables\Actions\DeleteBulkAction::make(),
+                \Filament\Actions\BulkActionGroup::make([
+                    \Filament\Actions\DeleteBulkAction::make(),
                 ]),
             ])
             ->striped();
@@ -173,3 +174,17 @@ class StaffAttendanceResource extends Resource
         ];
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+

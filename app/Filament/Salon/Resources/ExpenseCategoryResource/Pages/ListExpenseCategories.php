@@ -16,3 +16,4 @@ class ListExpenseCategories extends ManageRecords
         ];
     }
 }
+

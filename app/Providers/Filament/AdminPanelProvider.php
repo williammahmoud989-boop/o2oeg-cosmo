@@ -28,12 +28,12 @@ class AdminPanelProvider extends PanelProvider
             ->id('admin')
             ->path('admin')
             ->login()
-            ->brandName('O2OEG Cosmo')
-            ->brandLogo(asset('images/logo.svg'))
+            ->brandName(config('app.name'))
+            ->brandLogo(asset('images/logo-new.png'))
             ->brandLogoHeight('3rem')
             ->darkMode(true)
             ->colors([
-                'primary' => Color::Rose,
+                'primary' => Color::Orange,
                 'gray' => Color::Slate,
                 'danger' => Color::Red,
                 'info' => Color::Sky,

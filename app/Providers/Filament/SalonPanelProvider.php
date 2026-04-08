@@ -32,13 +32,13 @@ class SalonPanelProvider extends PanelProvider
             ->tenantRegistration(\App\Filament\Salon\Pages\Tenancy\RegisterSalon::class)
             ->tenantProfile(\App\Filament\Salon\Pages\Tenancy\EditSalonProfile::class)
             ->colors([
-                'primary' => Color::Rose,
+                'primary' => Color::Orange,
                 'secondary' => Color::Indigo,
                 'gray' => Color::Slate,
             ])
             ->defaultThemeMode(\Filament\Enums\ThemeMode::Dark)
-            ->brandName('O2OEG | Salon Hub')
-            ->brandLogo(asset('images/logo.svg'))
+            ->brandName('O2O EG | Salon Hub')
+            ->brandLogo(asset('images/logo-new.png'))
             ->brandLogoHeight('3rem')
             ->font('Cairo')
             ->discoverResources(in: app_path('Filament/Salon/Resources'), for: 'App\Filament\Salon\Resources')

@@ -14,7 +14,7 @@ use Filament\Schemas\Components\Section;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
-use Filament\Forms\Components\Repeater;
+use Filament\Schemas\Components\Repeater;
 use Filament\Tables;
 use Filament\Tables\Table;
 
@@ -212,16 +212,16 @@ class InvoiceResource extends Resource
                     ]),
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
-                Tables\Actions\Action::make('print')
+                \Filament\Actions\EditAction::make(),
+                \Filament\Actions\Action::make('print')
                     ->label('طباعة')
                     ->icon('heroicon-o-printer')
                     ->url(fn ($record) => route('invoices.print', $record), shouldOpenInNewTab: true)
                     ->color('info'),
             ])
             ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
+                \Filament\Actions\BulkActionGroup::make([
+                    \Filament\Actions\DeleteBulkAction::make(),
                 ]),
             ]);
     }
@@ -235,3 +235,7 @@ class InvoiceResource extends Resource
         ];
     }
 }
+
+
+
+

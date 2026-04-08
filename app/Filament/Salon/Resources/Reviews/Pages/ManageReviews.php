@@ -17,3 +17,4 @@ class ManageReviews extends ManageRecords
         ];
     }
 }
+
