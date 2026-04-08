@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="utf-8">
@@ -47,17 +47,17 @@
         <section id="ai-consultant" class="ai-section reveal">
             <div class="container" style="margin: 0 auto; max-width: 1250px; width: 100%;">
                 <div class="section-header" style="text-align: center; margin: 0 auto 4rem auto; max-width: 800px;">
-                    <span class="section-tag">ط®ط¨ظٹط± ط§ظ„طھط¬ظ…ظٹظ„ ط§ظ„ط°ظƒظٹ 2026</span>
-                    <h2 class="section-title">ط­ظ„ظ„ظٹ ط¬ظ…ط§ظ„ظƒ ط¨ط§ظ„ط°ظƒط§ط، ط§ظ„ط§طµط·ظ†ط§ط¹ظٹ</h2>
-                    <p class="modal-subtitle" style="margin: 0 auto; max-width: 750px;">ط§ط±ظپط¹ظٹ طµظˆط±طھظƒ ط§ظ„ط¢ظ† ظˆط¯ط¹ظٹ ظ…ط­ط±ظƒ Gemini ظٹط­ظ„ظ„ ط§ط­طھظٹط§ط¬ط§طھظƒ ظˆظٹظ‚طھط±ط­ ظ„ظƒ ط§ظ„ط®ط¯ظ…ط§طھ ط§ظ„ظ…ط«ط§ظ„ظٹط©.</p>
+                    <span class="section-tag">خبير التجميل الذكي 2026</span>
+                    <h2 class="section-title">حللي جمالك بالذكاء الاصطناعي</h2>
+                    <p class="modal-subtitle" style="margin: 0 auto; max-width: 750px;">ارفعي صورتك الآن ودعي محرك Gemini يحلل احتياجاتك ويقترح لك الخدمات المثالية.</p>
                 </div>
 
                 <div class="ai-scanner-container">
                     <div class="upload-area" id="uploadArea">
                         <div id="uploadPlaceholder">
-                            <div class="icon" style="font-size: 4rem; margin-bottom: 1.5rem;">ًں“¸</div>
-                            <h3>ط§ط¶ط؛ط·ظٹ ظ‡ظ†ط§ ظ„ط±ظپط¹ ط§ظ„طµظˆط±ط©</h3>
-                            <p>ط£ظˆ ط§ط³ط­ط¨ظٹ ط§ظ„طµظˆط±ط© ظ…ط¨ط§ط´ط±ط© (JPG, PNG)</p>
+                            <div class="icon" style="font-size: 4rem; margin-bottom: 1.5rem;">📸</div>
+                            <h3>اضغطي هنا لرفع الصورة</h3>
+                            <p>أو اسحبي الصورة مباشرة (JPG, PNG)</p>
                         </div>
                         
                         <div id="previewContainer" class="preview-container">
@@ -69,19 +69,19 @@
                     <div style="text-align: center; margin-top: 2rem;">
                         <input type="file" id="imageInput" accept="image/*" style="display: none;">
                         <button id="analyzeBtn" class="btn btn-orange" style="display: none;">
-                            ط§ط¨ط¯ط£ ط§ظ„طھط­ظ„ظٹظ„ ط§ظ„ط±ظ‚ظ…ظٹ âڑ،
+                            ابدأ التحليل الرقمي ⚡
                         </button>
                     </div>
 
                     <!-- Result Card -->
                     <div id="aiResultCard" class="ai-result-card">
                         <h3 style="color: var(--primary-orange); display: flex; align-items: center; gap: 0.8rem; margin-bottom: 1.5rem;">
-                            <span>âœ¨</span> ظ†طھظٹط¬ط© ط§ظ„طھط­ظ„ظٹظ„ ط§ظ„ط°ظƒظٹ
+                            <span>✨</span> نتيجة التحليل الذكي
                         </h3>
                         <div id="aiAnalysisText" style="font-size: 1.1rem; line-height: 1.8;"></div>
                         
                         <div class="ai-reasoning">
-                            <strong>ظ„ظ…ط§ط°ط§ ظ‡ط°ظ‡ ط§ظ„ط®ط¯ظ…ط§طھطں</strong>
+                            <strong>لماذا هذه الخدمات؟</strong>
                             <p id="aiReasoningText" style="margin-top: 0.5rem;"></p>
                         </div>
 
@@ -90,7 +90,7 @@
                         </div>
 
                         <div style="margin-top: 2.5rem; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 1.5rem;">
-                            <a href="#services" class="btn btn-orange" style="width: 100%; justify-content: center;">ط­ط¬ط² ط§ظ„ظ…ظˆط¹ط¯ ط§ظ„ط¢ظ†</a>
+                            <a href="#services" class="btn btn-orange" style="width: 100%; justify-content: center;">حجز الموعد الآن</a>
                         </div>
                     </div>
                 </div>
