@@ -1,6 +1,18 @@
 /* design.css - نظام التصميم الفاخر "Gen Z 2026" */
 @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&family=Outfit:wght@300;400;600;700;900&display=swap');
 
+/* Global Layout Optimization */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html[dir="rtl"] body {
+  text-align: right;
+  direction: rtl;
+}
+
 :root {
   --primary-orange: #FF5C00; /* Electric Orange */
   --primary-indigo: #4F46E5; /* Cyber Indigo */
@@ -13,9 +25,6 @@
   --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-* {
-  margin: 0;
-  padding: 0;
   box-sizing: border-box;
 }
 

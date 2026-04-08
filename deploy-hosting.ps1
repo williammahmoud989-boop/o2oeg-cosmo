@@ -18,12 +18,9 @@ if (-not (Test-Path "node_modules")) {
 Write-Host "Building assets locally..."
 npm run build
 
-# 3. Create Zip (Including vendor for a guaranteed working deployment)
-Write-Host "Creating deployment package (including vendor)..."
-if (Test-Path $ZIP_FILE) { Remove-Item $ZIP_FILE }
-
-# We include vendor now to ensure the site works immediately on the server
-Get-ChildItem -Path . -Exclude "node_modules", ".git", "tests", "storage", ".env", ".env.example", $ZIP_FILE | Compress-Archive -DestinationPath $ZIP_FILE -Force
+# We exclude vendor and other large/temporary folders to speed up the process.
+# The server will run composer install to get the dependencies.
+Get-ChildItem -Path . -Exclude "node_modules", "vendor", ".git", "tests", "storage", ".env", ".env.example", $ZIP_FILE | Compress-Archive -DestinationPath $ZIP_FILE -Force
 
 Write-Host "Package created: $ZIP_FILE"
 

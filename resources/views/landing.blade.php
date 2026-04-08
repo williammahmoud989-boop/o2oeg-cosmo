@@ -17,7 +17,7 @@
     <div class="mesh-bg"></div>
 
     <nav class="glass" style="position: sticky; top: 0; z-index: 1000; padding: 1rem 0;">
-        <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
+        <div class="container" style="margin: 0 auto; max-width: 1250px; width: 100%;" style="display: flex; justify-content: space-between; align-items: center;">
             <a href="/" style="display: flex; align-items: center; gap: 0.75rem; text-decoration: none; color: white; font-weight: 900; font-size: clamp(1.2rem, 4vw, 1.8rem);">
                 <img src="/images/logo-new.png" alt="O2O EG" style="height: clamp(35px, 6vw, 50px); border-radius: 10px;">
                 <span>O2O EG</span>
@@ -30,7 +30,7 @@
        <main>
         <!-- Hero Section - FIXED STRUCTURE -->
         <section class="hero" style="padding: clamp(5rem, 15vw, 10rem) 0; text-align: center; position: relative; z-index: 5;">
-            <div class="container">
+            <div class="container" style="margin: 0 auto; max-width: 1250px; width: 100%;">
                 <span style="color: #FF5C00; font-weight: 800; text-transform: uppercase; letter-spacing: 2px;">مستقبل صالونات التجميل</span>
                 <h1 style="font-size: clamp(2.2rem, 8vw, 4.5rem); font-weight: 900; line-height: 1.1; margin: 1.5rem 0;">التحول الرقمي لقطاع الجمال: <span style="color: #FF5C00;">O2O EG</span></h1>
                 <p style="font-size: clamp(1rem, 3vw, 1.4rem); color: #94A3B8; max-width: 800px; margin: 0 auto 3rem; line-height: 1.8;">
@@ -45,8 +45,8 @@
 
                 <!-- AI Consultant Section -->
         <section id="ai-consultant" class="ai-section reveal">
-            <div class="container">
-                <div class="section-header" style="text-align: center; margin-bottom: 4rem;">
+            <div class="container" style="margin: 0 auto; max-width: 1250px; width: 100%;">
+                <div class="section-header" style="text-align: center; margin: 0 auto 4rem auto; max-width: 800px;">
                     <span class="section-tag">ط®ط¨ظٹط± ط§ظ„طھط¬ظ…ظٹظ„ ط§ظ„ط°ظƒظٹ 2026</span>
                     <h2 class="section-title">ط­ظ„ظ„ظٹ ط¬ظ…ط§ظ„ظƒ ط¨ط§ظ„ط°ظƒط§ط، ط§ظ„ط§طµط·ظ†ط§ط¹ظٹ</h2>
                     <p class="modal-subtitle" style="margin: 0 auto; max-width: 750px;">ط§ط±ظپط¹ظٹ طµظˆط±طھظƒ ط§ظ„ط¢ظ† ظˆط¯ط¹ظٹ ظ…ط­ط±ظƒ Gemini ظٹط­ظ„ظ„ ط§ط­طھظٹط§ط¬ط§طھظƒ ظˆظٹظ‚طھط±ط­ ظ„ظƒ ط§ظ„ط®ط¯ظ…ط§طھ ط§ظ„ظ…ط«ط§ظ„ظٹط©.</p>
@@ -99,10 +99,10 @@
 
         <!-- Services Modular Grid - RESTORED -->
         <section id="services" style="padding: clamp(5rem, 15vw, 10rem) 0; background: rgba(255, 92, 0, 0.02); border-top: 1px solid rgba(255,255,255,0.05);">
-            <div class="container">
+            <div class="container" style="margin: 0 auto; max-width: 1250px; width: 100%;">
                 <div style="text-align: center; margin-bottom: 5rem;">
                     <span style="color: #FF5C00; font-weight: 800; text-transform: uppercase;">منظومة القوة الذكية</span>
-                    <h2 style="font-size: clamp(2.5rem, 5vw, 3.5rem); font-weight: 900; margin-top: 1.5rem; color: white;">محركات النمو الرقمي</h2>
+                    <h2 style="font-size: clamp(1.8rem, 5vw, 2.8rem); font-weight: 900; margin-top: 1.5rem; color: white;">محركات النمو الرقمي</h2>
                     <p style="color: #94A3B8; margin-top: 1rem;">اضغط على أي موديول لاستكشاف المواصفات التقنية الكاملة.</p>
                 </div>
 
@@ -173,7 +173,7 @@
     </main>
 
     <footer style="padding: clamp(3rem, 10vw, 6rem) 0; border-top: 1px solid var(--glass-border); text-align: center;">
-        <div class="container">
+        <div class="container" style="margin: 0 auto; max-width: 1250px; width: 100%;">
             <h2 style="font-weight: 900; margin-bottom: 1.5rem; color: white;">O2O EG</h2>
             <p style="color: var(--text-dim); font-size: 0.9rem;">&copy; {{ date('Y') }} O2O EG Cosmo. جميع الحقوق محفوظة.</p>
         </div>
