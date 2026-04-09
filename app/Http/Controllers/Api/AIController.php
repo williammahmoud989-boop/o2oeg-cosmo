@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Services\AI\GeminiService;
 use App\Models\Salon;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Log;
 
 class AIController extends Controller
 {

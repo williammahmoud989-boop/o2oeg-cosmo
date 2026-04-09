@@ -74,8 +74,8 @@ document.addEventListener('DOMContentLoaded', () => {
     function displayResults(data) {
         aiResultCard.style.display = 'block';
 
-        if (data.success === false) {
-            document.getElementById('aiAnalysisText').innerHTML = data.analysis;
+        if (!data.success) {
+            document.getElementById('aiAnalysisText').innerHTML = data.analysis || 'عذراً، حدث خطأ أثناء المعالجة.';
             document.getElementById('aiReasoningText').innerHTML = '';
             document.getElementById('recommendationChips').innerHTML = '';
         } else {
