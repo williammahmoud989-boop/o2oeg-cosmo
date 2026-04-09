@@ -2,21 +2,17 @@
 
 namespace App\Services\AI;
 
-use GuzzleHttp\Client;
-use GuzzleHttp\Exception\GuzzleException;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
 
 class GeminiService
 {
-    protected $client;
     protected $apiKey;
-    // gemini-2.0-flash: supports image analysis (Vision) and is available globally
     protected $apiUrl = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent';
 
     public function __construct()
     {
         $this->apiKey = config('services.gemini.key');
-        $this->client = new Client(['verify' => false]);
     }
 
     /**
@@ -26,81 +22,65 @@ class GeminiService
     {
         try {
             if (!file_exists($imagePath) || !is_readable($imagePath)) {
-                Log::error("Gemini Image Path Issue: File does not exist or is not readable at {$imagePath}");
+                Log::error("Gemini: File not found at {$imagePath}");
                 return ['error' => 'الصورة غير موجودة أو لا يمكن قراءتها.'];
             }
 
             $imageData = base64_encode(file_get_contents($imagePath));
             $servicesList = implode(', ', array_map(fn($s) => $s['name_ar'] ?? $s['name'], $availableServices));
 
-            $prompt = "أنت خبير تجميل ذكي ومحترف في منصة O2OEG Cosmo. حلل الصورة المرفقة (شعر أو بشرة) واكتشف الاحتياجات الجمالية للعميلة. بناءً على ذلك، اختر أفضل 2-3 خدمات من القائمة التالية فقط: [{$servicesList}]. أجب بـ JSON فقط بهذا الشكل بالضبط لا أي نص إضافي: {\"analysis\": \"نص التحليل بالعربية\", \"recommendations\": [\"خدمة 1\", \"خدمة 2\"], \"reasoning\": \"سبب الاختيار بالعربية\"}";
+            $prompt = "أنت خبير تجميل محترف. حلل هذه الصورة واقترح 2-3 خدمات مناسبة من: [{$servicesList}]. أجب بـ JSON فقط بهذا الشكل: {\"analysis\": \"وصف الحالة\", \"recommendations\": [\"خدمة1\", \"خدمة2\"], \"reasoning\": \"سبب الاختيار\"}";
 
-
-            // Retry logic: attempt up to 2 times to handle transient 503 errors
-            $response = null;
-            $lastError = null;
-            for ($attempt = 1; $attempt <= 2; $attempt++) {
-                try {
-                    $response = $this->client->post($this->apiUrl . '?key=' . $this->apiKey, [
-                        'json' => [
-                            'contents' => [
+            $response = Http::timeout(30)
+                ->withoutVerifying()
+                ->post($this->apiUrl . '?key=' . $this->apiKey, [
+                    'contents' => [
+                        [
+                            'parts' => [
+                                ['text' => $prompt],
                                 [
-                                    'parts' => [
-                                        ['text' => $prompt],
-                                        [
-                                            'inline_data' => [
-                                                'mime_type' => 'image/jpeg',
-                                                'data' => $imageData
-                                            ]
-                                        ]
+                                    'inline_data' => [
+                                        'mime_type' => 'image/jpeg',
+                                        'data' => $imageData,
                                     ]
                                 ]
-                            ],
-                            'generationConfig' => [
-                                'temperature' => 0.7,
                             ]
-                        ],
-                        'timeout' => 30,
-                    ]);
-                    break; // Success, exit retry loop
-                } catch (GuzzleException $retryEx) {
-                    $lastError = $retryEx;
-                    if ($attempt < 2) sleep(2); // Wait 2 seconds before retry
-                }
-            }
-            if (!$response) throw $lastError;
+                        ]
+                    ],
+                    'generationConfig' => [
+                        'temperature' => 0.7,
+                        'maxOutputTokens' => 512,
+                    ]
+                ]);
 
-            $body = $response->getBody()->getContents();
-            $result = json_decode($body, true);
-            
-            $responseText = $result['candidates'][0]['content']['parts'][0]['text'] ?? '';
-            
-            // Critical Fix: Strip possible Markdown JSON wrapper
-            $responseText = preg_replace('/^```json\s*|```\s*$/', '', trim($responseText));
-            
-            $parsedResponse = json_decode($responseText, true);
-            
-            if (json_last_error() !== JSON_ERROR_NONE) {
-                Log::error("Gemini JSON Parse Error: " . json_last_error_msg());
-                Log::error("Raw Response Text: " . $responseText);
-                return ['error' => 'تعذر تحليل الرد من الذكاء الاصطناعي.'];
+            if (!$response->successful()) {
+                $error = $response->json('error.message', 'Unknown API error');
+                $status = $response->status();
+                Log::error("Gemini API Error [{$status}]: {$error}");
+                return ['error' => "API Error ({$status}): {$error}"];
             }
 
-            return $parsedResponse;
+            $responseText = $response->json('candidates.0.content.parts.0.text', '');
 
-        } catch (GuzzleException $e) {
-            $msg = $e->getMessage();
-            if ($e->hasResponse()) {
-                $status = $e->getResponse()->getStatusCode();
-                $body = $e->getResponse()->getBody()->getContents();
-                Log::error("Gemini API HTTP Error [{$status}]: " . $body);
-                return ['error' => "API Error ({$status}): " . substr($body, 0, 100)];
+            // Strip markdown code blocks if present
+            $responseText = preg_replace('/^```json\s*|\s*```$/m', '', trim($responseText));
+
+            $parsed = json_decode($responseText, true);
+
+            if (json_last_error() !== JSON_ERROR_NONE || !is_array($parsed)) {
+                Log::error("Gemini JSON Parse Error. Raw: " . $responseText);
+                return ['error' => 'تعذر قراءة رد الذكاء الاصطناعي.'];
             }
-            Log::error('Gemini API Error (Guzzle): ' . $msg);
-            return ['error' => 'Guzzle Error: ' . substr($msg, 0, 100)];
+
+            return [
+                'analysis'        => $parsed['analysis'] ?? 'تحليل جاهز.',
+                'recommendations' => $parsed['recommendations'] ?? [],
+                'reasoning'       => $parsed['reasoning'] ?? '',
+            ];
+
         } catch (\Exception $e) {
-            Log::error('Gemini Service Error: ' . $e->getMessage());
-            return ['error' => 'Internal Service Error: ' . $e->getMessage()];
+            Log::error('GeminiService Exception: ' . $e->getMessage());
+            return ['error' => $e->getMessage()];
         }
     }
 }
