@@ -1,6 +1,8 @@
 # Fast PowerShell Deployment Script for Hostinger
 # Usage: ./deploy-hosting.ps1
 
+Set-Location $PSScriptRoot
+
 $DOMAIN = "o2oeg.com"
 $IP = "82.29.188.80"
 $PORT = "65002"

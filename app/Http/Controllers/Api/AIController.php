@@ -58,6 +58,17 @@ class AIController extends Controller
             Storage::disk('public')->delete($tempPath);
         }
 
+        if (isset($analysis['error'])) {
+            Log::error('AI Analysis Failed for user: ' . $analysis['error']);
+            return response()->json([
+                'success' => false,
+                'analysis' => 'عذراً، لم نتمكن من تحليل الصورة في الوقت الحالي. يرجى المحاولة مرة أخرى.',
+                'recommendations' => [],
+                'reasoning' => '',
+                'status' => 'failed'
+            ], 200);
+        }
+
         return response()->json([
             'success' => true,
             'analysis' => $analysis['analysis'] ?? 'عذراً، لم نتمكن من تحليل الصورة بشكل دقيق.',

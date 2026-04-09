@@ -74,19 +74,27 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function displayResults(data) {
         aiResultCard.style.display = 'block';
-        
-        document.getElementById('aiAnalysisText').innerHTML = data.analysis;
-        document.getElementById('aiReasoningText').innerHTML = data.reasoning;
-        
-        const chipsContainer = document.getElementById('recommendationChips');
-        chipsContainer.innerHTML = '';
-        
-        data.recommendations.forEach(rec => {
-            const chip = document.createElement('span');
-            chip.className = 'chip';
-            chip.innerHTML = rec;
-            chipsContainer.appendChild(chip);
-        });
+
+        if (data.success === false) {
+            document.getElementById('aiAnalysisText').innerHTML = data.analysis;
+            document.getElementById('aiReasoningText').innerHTML = '';
+            document.getElementById('recommendationChips').innerHTML = '';
+        } else {
+            document.getElementById('aiAnalysisText').innerHTML = data.analysis;
+            document.getElementById('aiReasoningText').innerHTML = data.reasoning;
+
+            const chipsContainer = document.getElementById('recommendationChips');
+            chipsContainer.innerHTML = '';
+
+            if (Array.isArray(data.recommendations)) {
+                data.recommendations.forEach(rec => {
+                    const chip = document.createElement('span');
+                    chip.className = 'chip';
+                    chip.innerHTML = rec;
+                    chipsContainer.appendChild(chip);
+                });
+            }
+        }
 
         // Scroll to results
         aiResultCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
