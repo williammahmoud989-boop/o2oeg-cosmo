@@ -44,18 +44,17 @@ document.addEventListener('DOMContentLoaded', () => {
             const response = await fetch('/api/ai/analyze-consultation', {
                 method: 'POST',
                 body: formData,
-                headers: {
-                    'Accept': 'application/json'
-                    // CSRF token is usually needed for POST in Laravel but since this is an API route, 
-                    // it might be handled by Sanctum or not required depending on middleware.
-                }
+                headers: { 'Accept': 'application/json' }
             });
 
-            if (!response.ok) throw new Error('Analysis failed');
+            // Always try to parse JSON, even on error responses
+            let data;
+            try {
+                data = await response.json();
+            } catch (e) {
+                data = { success: false, analysis: 'عذراً، حدث خطأ في الاتصال بالخادم. يرجى المحاولة مرة أخرى.' };
+            }
 
-            const data = await response.json();
-            
-            // Wait a bit for cinematic effect
             setTimeout(() => {
                 displayResults(data);
                 scannerLine.style.display = 'none';
@@ -65,10 +64,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
         } catch (error) {
             console.error(error);
-            alert('عذراً، حدث خطأ أثناء الاتصال بالخادم الذكي.');
             scannerLine.style.display = 'none';
             analyzeBtn.disabled = false;
             analyzeBtn.innerHTML = 'حاول مرة أخرى';
+            displayResults({ success: false, analysis: 'عذراً، لا يمكن الاتصال بالخادم. تحقق من اتصالك بالإنترنت.' });
         }
     });
 

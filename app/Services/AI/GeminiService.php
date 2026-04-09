@@ -33,18 +33,8 @@ class GeminiService
             $imageData = base64_encode(file_get_contents($imagePath));
             $servicesList = implode(', ', array_map(fn($s) => $s['name_ar'] ?? $s['name'], $availableServices));
 
-            $prompt = "
-                أنت خبير تجميل ذكي ومحترف في منصة O2OEG Cosmo. 
-                حلل الصورة المرفقة (شعر أو بشرة) واكتشف الاحتياجات الجمالية للعميلة.
-                بناءً على ذلك، اختر أفضل 2-3 خدمات من القائمة التالية فقط: [{$servicesList}].
-                
-                يجب أن يكون الرد بتنسيق JSON يحتوي على:
-                1. 'analysis': تحليل موجز وودي للحالة (نثري باللغة العربية).
-                2. 'recommendations': مصفوفة بأسماء الخدمات المقترحة.
-                3. 'reasoning': لماذا اخترت هذه الخدمات تحديداً.
-                
-                اجعل أسلوبك مشجعاً ومهنياً. لا تضع أي نصوص خارج تنسيق JSON.
-            ";
+            $prompt = "أنت خبير تجميل ذكي ومحترف في منصة O2OEG Cosmo. حلل الصورة المرفقة (شعر أو بشرة) واكتشف الاحتياجات الجمالية للعميلة. بناءً على ذلك، اختر أفضل 2-3 خدمات من القائمة التالية فقط: [{$servicesList}]. أجب بـ JSON فقط بهذا الشكل بالضبط لا أي نص إضافي: {\"analysis\": \"نص التحليل بالعربية\", \"recommendations\": [\"خدمة 1\", \"خدمة 2\"], \"reasoning\": \"سبب الاختيار بالعربية\"}";
+
 
             // Retry logic: attempt up to 2 times to handle transient 503 errors
             $response = null;
@@ -67,7 +57,7 @@ class GeminiService
                                 ]
                             ],
                             'generationConfig' => [
-                                'response_mime_type' => 'application/json',
+                                'temperature' => 0.7,
                             ]
                         ],
                         'timeout' => 30,

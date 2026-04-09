@@ -192,7 +192,7 @@
     <!-- Scripts -->
     <script src="{{ asset('js/feature-grid.js') }}"></script>
     <script src="{{ asset('js/modal.js') }}"></script>
-    <script src="{{ asset('js/ai-consultant.js') }}"></script>
+    <script src="{{ asset('js/ai-consultant.js') }}?v={{ filemtime(public_path('js/ai-consultant.js')) }}"></script>
     <script>
         // Custom Cursor Movement
         const cursor = document.getElementById('custom-cursor');
