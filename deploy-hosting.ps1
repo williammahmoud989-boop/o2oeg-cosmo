@@ -38,12 +38,16 @@ Write-Host "Running remote setup and installing dependencies on server..."
 $REMOTE_CMDS = @(
     "cd $REMOTE_PATH",
     "unzip -o $ZIP_FILE",
-    "rm $ZIP_FILE",
+    "rm -f $ZIP_FILE",
     "cp .env.production .env",
-    "composer install --no-dev --optimize-autoloader", # Install dependencies on server
+    "composer install --no-dev --optimize-autoloader",
     "php artisan migrate --force",
     "php artisan config:cache",
-    "php artisan storage:link"
+    "php artisan route:cache",
+    "php artisan view:clear",
+    "php artisan cache:clear",
+    "php artisan storage:link",
+    "echo 'Deployment complete!'"
 )
 
 $FINAL_CMD = $REMOTE_CMDS -join "; "
